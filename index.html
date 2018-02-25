@@ -22,8 +22,9 @@
 <script>
     window.onload = function() {
         var photoTilt = new PhotoTilt({
+            maxTilt: 11,
             url:'img/trasla.jpg',
-            lowResUrl: 'img/trasla.jpg',
+            lowResUrl: 'img/trasla-lowres.jpg',
             container: document.querySelector('.background')
         });
     }
