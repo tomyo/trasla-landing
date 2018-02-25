@@ -12,18 +12,20 @@
 </head>
 <body>
   <script src="modules/photoTilt/photoTilt.js"></script>
-  <script>
-      (function() {
-          var photoTilt = new PhotoTilt({
-              url:'img/trasla.jpg',
-              // lowResUrl: 'http://farm5.staticflickr.com/4016/4251578904_f13592585c_m.jpg',
-              maxTilt: 12
-          });
-      })();
-  </script>
+  <div class="background"></div>
   <main>
+    <h1>TRASLA</h1>
   </main>
   <footer>
   </footer>
 </body>
+<script>
+    window.onload = function() {
+        var photoTilt = new PhotoTilt({
+            url:'img/trasla.jpg',
+            lowResUrl: 'img/trasla.jpg',
+            container: document.querySelector('.background')
+        });
+    }
+</script>
 </html>
