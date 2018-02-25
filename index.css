@@ -11,6 +11,9 @@ body .background {
   height: 100vh;
   position: absolute;
 }
+body .background .tilt-bar {
+  display: none;
+}
 body main {
   position: relative;
   z-index: 1;
