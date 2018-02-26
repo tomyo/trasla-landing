@@ -9,6 +9,7 @@
   <meta name="description" content="Trasa: Lo mejor de Traslasierra, las sierras del oéste de Córdoba."/>
   <link rel="stylesheet" type="text/css" href="index.css"/>
 	<link rel="stylesheet" href="modules/photoTilt/style.css" />
+  <script type="text/javascript" src="sw.js" async></script>
 </head>
 <body>
   <script src="modules/photoTilt/photoTilt.js"></script>
@@ -26,6 +27,18 @@
             url:'img/trasla.jpg',
             container: document.querySelector('.background')
         });
+
+        if ('serviceWorker' in navigator) {
+          // Register a service worker hosted at the root of the
+          // site using the default scope.
+          navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('Service worker registration succeeded:', registration);
+          }).catch(function(error) {
+            console.log('Service worker registration failed:', error);
+          });
+        } else {
+          console.log('Service workers are not supported.');
+        }
     }
 </script>
 </html>
