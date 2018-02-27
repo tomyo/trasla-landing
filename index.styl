@@ -14,8 +14,23 @@ body
   main
     position: relative
     z-index: 1
-    h1
+    font-family: koaraRegular
+    display: flex
+    flex-flow: column
+    justify-content: space-around
+    align-items: center
+    height: 100%
+    .title
       text-align: center
+    button
       font-family: koaraRegular
-      font-size: 4em
-      margin-top: 2em
+      color: white
+      background: none
+      outline: 1px solid white
+      border: none
+      padding: .5em 1em
+      cursor: pointer
+      font-size: 2em
+      width: fit-content
+      &:active
+        background: black

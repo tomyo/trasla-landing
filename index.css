@@ -17,10 +17,27 @@ body .background .tilt-bar {
 body main {
   position: relative;
   z-index: 1;
-}
-body main h1 {
-  text-align: center;
   font-family: koaraRegular;
-  font-size: 4em;
-  margin-top: 2em;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+body main .title {
+  text-align: center;
+}
+body main button {
+  font-family: koaraRegular;
+  color: #fff;
+  background: none;
+  outline: 1px solid #fff;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-size: 2em;
+  width: fit-content;
+}
+body main button:active {
+  background: #000;
 }
