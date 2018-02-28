@@ -17,7 +17,7 @@ function precache() {
       '/index.html',
       '/index.css',
       '/img/trasla.jpg',
-      '/fonts/koara_regular.otf',
+      '/fonts/Arber-Vintage-Free.woff',
     ]);
   });
 }
