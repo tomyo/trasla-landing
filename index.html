@@ -1,48 +1,184 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>TRASLA</title>
-  <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="description" content="Lo mejor de Traslasierra, las sierras del oéste de Córdoba."/>
-  <link rel="stylesheet" type="text/css" href="index.css"/>
-	<link rel="stylesheet" href="modules/photoTilt/style.css" />
-  <script type="text/javascript" src="sw.js" async></script>
-</head>
-<body>
-  <script src="modules/photoTilt/photoTilt.js"></script>
-  <div class="background"></div>
-  <main>
-    <div class="title">
-      <h1>TRASLASIERRA</h1>
-      <h3>Córdoba - Argentina</h3>
-    </div>
-    <button>Lo mejor de Trasla</button>
-  </main>
-  <footer>
-  </footer>
-</body>
-<script>
-    window.onload = function() {
-        var photoTilt = new PhotoTilt({
-            // maxTilt: 11,
-            url:'img/trasla.jpg',
-            container: document.querySelector('.background')
-        });
+<html lang="es-AR">
+  <head>
+    <meta name="theme-color" content="#303030" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conectá con Traslasierra, Córdoba, Argentina"
+    />
+    <script type="module" src="/components/theme-toggle.js"></script>
 
-        if ('serviceWorker' in navigator) {
-          // Register a service worker hosted at the root of the
-          // site using the default scope.
-          navigator.serviceWorker.register('/sw.js').then(function(registration) {
-            console.log('Service worker registration succeeded:', registration);
-          }).catch(function(error) {
-            console.log('Service worker registration failed:', error);
-          });
-        } else {
-          console.log('Service workers are not supported.');
+    <title>Trasla</title>
+
+    <style>
+      /* Reset */
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        min-height: 100%;
+        font-size: 100%;
+        line-height: 1.25;
+        scroll-behavior: smooth;
+      }
+
+      /* Global styles */
+
+      /* <theme> */
+      [data-theme="🌑"] {
+        --color-scheme: dark;
+        color-scheme: dark;
+      }
+
+      [data-theme="☀️"] {
+        --color-scheme: light;
+        color-scheme: light;
+      }
+
+      :root {
+        --brand-color: #303030;
+        --color: #222222;
+        --background-color: color-mix(in srgb, var(--brand-color) 15%, white);
+        color-scheme: var(--color-scheme, dark light);
+
+        &[data-theme="🌑"] {
+          color-scheme: dark;
+
+          --color: #f5f5f5;
+          --background-color: var(--brand-color);
         }
-    }
-</script>
+      }
+      /* </theme> */
+
+      @font-face {
+        font-family: "Objective";
+        src: url("/assets/fonts/Objective-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      body {
+        font-family: Objective, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif;
+        background-color: var(--background-color);
+        color: var(--color);
+
+        transition: all ease-in-out 0.2s;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      .button {
+        outline: 1px solid currentColor;
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+
+        &:hover, &:focus-within {
+          background-color: color-mix(
+          in srgb,
+          var(--color, currentColor) 10%,
+          transparent
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <picture>
+      <source
+        srcset="/assets/images/portada-w2048.avif"
+        type="image/avif"
+        media="(orientation: landscape)"
+        width="2048"
+        heigth="1365"
+      />
+      <source
+        srcset="/assets/images/portada-w2048.jpg"
+        type="image/jpeg"
+        media="(orientation: landscape)"
+        width="2048"
+        heigth="1365"
+      />
+      <source
+        srcset="/assets/images/portada-w500.avif"
+        type="image/avif"
+        media="(orientation: portrait)"
+        width="500"
+        heigth="1000"
+      />
+      <img
+        id="bgImage"
+        src="/assets/images/portada-w500.jpg"
+        type="image/jpeg"
+        width="500"
+        heigth="1000"
+        media="(orientation: portrait)"
+        alt="Foto de las sierras de Traslasierra"
+      />
+      <style>
+        #bgImage {
+          position: fixed;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          object-fit: cover;
+          object-position: center;
+        }
+      </style>
+    </picture>
+
+    <header>
+      <h1>TRASLA</h1>
+    </header>
+    <main>
+      <a class="button" href="https://eventos.trasla.com.ar">
+        <h2>EVENTOS</h2>
+      </a>
+    </main>
+
+    <style>
+      header {
+        text-align: center;
+        padding-top: 3.3rem;
+
+        h1 {
+          line-height: 1.5;
+          text-decoration: underline;
+          text-underline-offset: 0.55rem;
+          font-weight: 400;
+          margin-bottom: 0.4rem;
+        }
+      }
+
+      main {
+        max-width: 37ch;
+        margin: auto;
+        display: grid;
+        place-content: center;
+        height: 50%;
+      }
+
+      /* css support warning */
+      @supports not selector(&) {
+        main::after {
+          content: "🚨 Este sitio por ahora requiere de una versión mas actualizada de tu navegador...";
+          display: block;
+          color: red;
+          font-size: 1.5rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </body>
 </html>
